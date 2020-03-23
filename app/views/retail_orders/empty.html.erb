@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h2 id="message">There are no outstanding orders at this time.</h2>
+<br>
+<%= link_to 'Refresh', retail_orders_find_path, id: "refresh", :style=> 'display:none', class: "btn btn-primary" %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+<% if current_user.retail_rapid_order_role == 'Admin' %>
+  <%= link_to 'Orders', retail_orders_path, class: "btn btn-primary" %>
+<% end %>

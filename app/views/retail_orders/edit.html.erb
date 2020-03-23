@@ -1,0 +1,15 @@
+<% if @count == 1 %>
+  <h2>Editing Order.  This is the last order in the queue.</h2>
+<% else %>
+  <h2>Editing Order.  There are <%= @count %> orders in the queue.</h2>
+<% end %>
+<br>
+<p id="notice"><%= notice %></p>
+<br>
+<%= render 'form', retail_order: @retail_order %>
+<br>
+<% if current_user.retail_rapid_order_role == 'Admin' %>
+  <%= link_to 'Orders', retail_orders_path(id: @retail_order.id), class: "btn btn-primary" %>
+<% end %>
+<%= link_to 'Reject', retail_orders_reject_path(id: @retail_order.id), id: "reject", class: "btn btn-primary", :style => "display: none;" %>
+<%= link_to 'Quit', retail_orders_quit_path(id: @retail_order.id), id: "quit", class: "btn btn-primary" %>
